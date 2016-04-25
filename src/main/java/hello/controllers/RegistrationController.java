@@ -15,13 +15,12 @@ public class RegistrationController {
 
     @RequestMapping(value="/register", method=RequestMethod.GET)
     public String greetingForm(Model model) {
-        model.addAttribute("pers", new Person());
-        model.addAttribute("pw", new HashedPassword());
+        model.addAttribute("person", new Person());
         return "greeting";
     }
 
     @RequestMapping(value="/register", method=RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute Person person, Model model,HashedPassword hashedPassword) {
+    public String greetingSubmit(@ModelAttribute Person person, Model model ) {
         model.addAttribute("reg", person);
         return "result";
     }
