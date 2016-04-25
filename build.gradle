@@ -19,7 +19,11 @@ jar {
 
 repositories {
     mavenCentral()
+    maven{
+        url 'https://repo.spring.io/libs-milestone'
+    }
 }
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -29,6 +33,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     compile('org.xerial:sqlite-jdbc:3.8.11.2')
     compile('org.hibernate:hibernate-core:5.1.0.Final')
+    compile('org.springframework.security:spring-security-web:4.1.0.RC2')
     testCompile("junit:junit")
 }
 

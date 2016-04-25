@@ -1,8 +1,6 @@
-package hello;
+package hello.entities;
 
-/**
- * Created by Edwin on 2016.04.19..
- */
+
 public class Person {
 
     private String name;
