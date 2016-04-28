@@ -1,13 +1,23 @@
 package hello.entities;
 
 
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
 public class Person {
+
 
     private String name;
     private String surname;
     private String password;
     private String email;
     private int age;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     public String getSurname() {
         return surname;
@@ -50,10 +60,16 @@ public class Person {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "name: " + name + " surname: " + surname +  "email: " + email + " password: " + password + " age: " + age;
+    public long getId() {
+        return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    @Override
+    public String toString() {
+        return "name: " + name + " surname: " + surname + "email: " + email + " password: " + password + " age: " + age;
+    }
 }
