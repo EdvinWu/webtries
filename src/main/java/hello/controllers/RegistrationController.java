@@ -1,39 +1,31 @@
 package hello.controllers;
 
 import hello.entities.Person;
-import hello.services.HashedPassword;
-import hello.services.PersonServiceImpl;
+import hello.services.impl.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-
 @Controller
 public class RegistrationController {
+
     @Autowired
     private PersonServiceImpl personService;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String greetingForm(Model model) {
+    public String signUp(Model model) {
         model.addAttribute("person", new Person());
-        return "greeting";
+        return "signUp";
     }
-
-
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute Person person, Model model)   {
+    public String signSubmit(@ModelAttribute Person person, Model model)   {
         model.addAttribute("reg", person);
-        HashedPassword hashedPassword = new HashedPassword();
-        person.setPassword(hashedPassword.getHashPassword(person.getPassword()));
+        personService.hashPassword(person);
         personService.addPerson(person);
-        return "result";
+        return "signUpResult";
     }
-
-
 }

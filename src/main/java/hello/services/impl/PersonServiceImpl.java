@@ -1,9 +1,9 @@
-package hello.services;
+package hello.services.impl;
 
-import hello.dao.PersonRepository;
+import hello.repository.PersonRepository;
 import hello.entities.Person;
+import hello.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +14,12 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     private PersonRepository personRepository;
+    @Autowired
+    private HashServiceImpl hashServiceImpl;
 
     @Override
     public Person addPerson(Person person) {
-        Person savedPerson = personRepository.saveAndFlush(person);
-        return savedPerson;
+        return personRepository.save(person);
     }
 
     @Override
@@ -29,16 +30,22 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person getByEmail(String email) {
-        return null;//personRepository.findByEmail(email);
+        return personRepository.findByEmail(email);
     }
 
     @Override
     public Person editPerson(Person person) {
-        return personRepository.saveAndFlush(person);
+        return personRepository.save(person);
     }
 
     @Override
     public List<Person> getAll() {
-        return personRepository.findAll();
+        return (List<Person>) personRepository.findAll();
+    }
+
+    @Override
+    public void hashPassword(Person person){
+        person.setPassword(hashServiceImpl.getHashPassword(person.getPassword()));
+
     }
 }

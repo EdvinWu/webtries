@@ -1,7 +1,6 @@
 package hello.entities;
 
 
-
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
