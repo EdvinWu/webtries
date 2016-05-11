@@ -19,6 +19,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person addPerson(Person person) {
+        person.setPassword(hashServiceImpl.getHashPassword(person.getPassword()));
         return personRepository.save(person);
     }
 
@@ -44,8 +45,16 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void hashPassword(Person person){
+    public void hashPassword(Person person) {
         person.setPassword(hashServiceImpl.getHashPassword(person.getPassword()));
 
     }
+
+    @Override
+    public boolean notExist(Person person) {
+
+        return getByEmail(person.getEmail()) == null;
+    }
+
+
 }

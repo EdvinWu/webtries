@@ -18,4 +18,7 @@ public interface PersonService {
 
     void hashPassword(Person person);
 
+    boolean notExist(Person person);
+
+
 }
