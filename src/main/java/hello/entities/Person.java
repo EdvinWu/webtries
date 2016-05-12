@@ -1,6 +1,7 @@
 package hello.entities;
 
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ public class Person {
     private String name;
     private String surname;
     private String password;
+    @Column(unique=true)
     private String email;
     private int age;
     @Id

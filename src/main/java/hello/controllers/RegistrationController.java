@@ -22,10 +22,12 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String signSubmit(@ModelAttribute Person person, Model model)   {
+    public String signSubmit(@ModelAttribute Person person, Model model) {
         model.addAttribute("reg", person);
-        personService.hashPassword(person);
-        personService.addPerson(person);
-        return "signUpResult";
+        if (personService.notExist(person)) {
+            personService.addPerson(person);
+            return "signUpResult";
+        }
+        return "signUp";
     }
 }

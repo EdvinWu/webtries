@@ -29,17 +29,21 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-devtools")
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('org.hibernate:hibernate-core')
     runtime('org.postgresql:postgresql')
     compile('org.springframework.security:spring-security-web')
     compile('org.springframework.security:spring-security-core')
     compile('com.h2database:h2')
+<<<<<<< HEAD
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
     compile 'org.springframework.security:spring-security-web:4.1.0.RELEASE'
     compile 'org.springframework.security:spring-security-config:4.1.0.RELEASE'
+=======
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+>>>>>>> 94bb8222cf63a32f9169ceee6ebcb529516bed51
     testCompile("junit:junit")
 }
 
