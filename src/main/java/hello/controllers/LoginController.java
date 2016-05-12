@@ -23,9 +23,6 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginSubmit(@Valid Login login) {
-        if (logInService.validCredentials(login)){
-            return "loginResult";
-        }
         return "login";
     }
 }
